@@ -26,9 +26,10 @@ class mi_dashboard::startserver inherits mi_dashboard::params {
   }
 
   # Start the service
-  service { $service_name:
-    enable    => true,
-    ensure    => running,
-    subscribe => File["binary"],
+  service { 'integration_control_plane':
+    name    => 'icp',
+    ensure  => running,
+    enable  => true,
+    require => File['/etc/systemd/system/icp.service'],
   }
 }

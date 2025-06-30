@@ -64,9 +64,9 @@ class mi_dashboard inherits mi_dashboard::params {
 
   # Stop the existing setup
   exec { "stop-server":
-    command     => "kill -term $(cat ${install_path}/runtime.pid)",
+    command     => "kill -term $(cat ${install_path}/wso2carbon.pid)",
     path        => "/bin/",
-    onlyif      => "/usr/bin/test -f ${install_path}/runtime.pid",
+    onlyif      => "/usr/bin/test -f ${install_path}/wso2carbon.pid",
     subscribe   => File["binary"],
     refreshonly => true,
   }
