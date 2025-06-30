@@ -28,10 +28,12 @@ class mi_dashboard::params {
   $product = 'wso2mi-dashboard'
   $product_version = '4.3.0'
 
-  # Default ICP ZIP name
-  $archive_name_base = 'integration-control-plane'
+  # Name of the ICP dashboard archive
+  $archive_name = "integration-control-plane-${product_version}.zip"
+  # Derive base directory name from the archive
+  $archive_name_base = regsubst($archive_name, '\.zip$', '', 'G')
   # Directory name to install into
-  $install_dir_name  = "${archive_name_base}-${product_version}"
+  $install_dir_name  = $archive_name_base
   $service_name = "${product}"
 
   # Define the template
@@ -43,7 +45,6 @@ class mi_dashboard::params {
   $java_home = "/usr"
 
   # Product and installation information
-  $archive_name = "${archive_name_base}-${product_version}.zip"
   $product_binary = $archive_name
   $distribution_path = "${products_dir}/${product}/${product_version}"
   $install_path = "${distribution_path}/${install_dir_name}"

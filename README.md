@@ -43,13 +43,15 @@ This repository contains the Puppet modules for WSO2 Micro Integrator.
 The `mi_dashboard` module exposes a few parameters that can be tuned via Hiera
 or directly in your manifests.
 
-- `archive_name_base`  - Name of the ICP archive without the version
-  (default: `integration-control-plane`).
-- `install_dir_name`   - Directory name that the archive extracts to. By
-  default this is constructed as `<archive_name_base>-<product_version>`.
+- `archive_name`      - The ICP dashboard zip file to install. Defaults to
+  `integration-control-plane-<product_version>.zip`.
+- `archive_name_base` - The archive name without the `.zip` extension. This is
+  derived from `archive_name` and normally doesn't need manual changes.
+- `install_dir_name`  - Directory created by extracting the archive. Defaults
+  to the value of `archive_name_base`.
 
 To override the archive name in Hiera:
 
 ```yaml
-mi_dashboard::archive_name_base: 'custom-icp'
+mi_dashboard::archive_name: 'custom-icp-1.0.zip'
 ```

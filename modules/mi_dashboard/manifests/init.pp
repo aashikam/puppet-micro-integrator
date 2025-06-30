@@ -134,15 +134,12 @@ class mi_dashboard inherits mi_dashboard::params {
 
   # Copy the unit file required to deploy the server as a service
   file { '/etc/systemd/system/wso2mi-dashboard.service':
-    ensure  => present,
+    ensure  => file,
     owner   => root,
     group   => root,
     mode    => '0754',
     content => template('mi_dashboard/wso2mi-dashboard.service.erb'),
-    vars    => {
-      product_version  => $product_version,
-      install_dir_name => $install_dir_name,
-    },
+    notify  => Service[$service_name],
   }
 
   # Add agent specific file configurations
