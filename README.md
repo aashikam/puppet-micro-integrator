@@ -37,3 +37,19 @@ This repository contains the Puppet modules for WSO2 Micro Integrator.
 * Change Java distribution in site.pp file according to your requirement. [Refer](https://forge.puppet.com/modules/puppetlabs/java/readme)
 * Add any configuration changes required to `/modules/micro_integrator/templates/conf/deployment.toml.erb` file and use puppet config management to manage them. ( Facter, Hiera, etc. )
 * You can add any custom code to `/modules/micro_integrator/custom.pp`.
+
+## Configuration
+
+The `mi_dashboard` module exposes a few parameters that can be tuned via Hiera
+or directly in your manifests.
+
+- `archive_name_base`  - Name of the ICP archive without the version
+  (default: `integration-control-plane`).
+- `install_dir_name`   - Directory name that the archive extracts to. By
+  default this is constructed as `<archive_name_base>-<product_version>`.
+
+To override the archive name in Hiera:
+
+```yaml
+mi_dashboard::archive_name_base: 'custom-icp'
+```

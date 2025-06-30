@@ -3,10 +3,10 @@ Description=WSO2 Micro Integrator Dashboard
 After=network.target
 
 [Service]
-ExecStart=/bin/sh <%=@install_path%>/bin/dashboard.sh start
-ExecStop=/bin/sh <%=@install_path%>/bin/dashboard.sh stop
-ExecReload=/bin/sh <%=@install_path%>/bin/dashboard.sh restart
-PIDFile=<%=@install_path%>/runtime.pid
+ExecStart=/bin/sh /usr/local/wso2/wso2mi-dashboard/<%= @product_version %>/<%= @install_dir_name %>/bin/dashboard.sh start
+ExecStop=/bin/sh /usr/local/wso2/wso2mi-dashboard/<%= @product_version %>/<%= @install_dir_name %>/bin/dashboard.sh stop
+ExecReload=/bin/sh /usr/local/wso2/wso2mi-dashboard/<%= @product_version %>/<%= @install_dir_name %>/bin/dashboard.sh restart
+PIDFile=/usr/local/wso2/wso2mi-dashboard/<%= @product_version %>/<%= @install_dir_name %>/runtime.pid
 User=<%=@user%>
 Group=<%=@user_group%>
 Type=forking

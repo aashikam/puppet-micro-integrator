@@ -27,6 +27,11 @@ class mi_dashboard::params {
 
   $product = 'wso2mi-dashboard'
   $product_version = '4.3.0'
+
+  # Default ICP ZIP name
+  $archive_name_base = 'integration-control-plane'
+  # Directory name to install into
+  $install_dir_name  = "${archive_name_base}-${product_version}"
   $service_name = "${product}"
 
   # Define the template
@@ -38,9 +43,10 @@ class mi_dashboard::params {
   $java_home = "/usr"
 
   # Product and installation information
-  $product_binary = "${product}-${product_version}.zip"
+  $archive_name = "${archive_name_base}-${product_version}.zip"
+  $product_binary = $archive_name
   $distribution_path = "${products_dir}/${product}/${product_version}"
-  $install_path = "${distribution_path}/${product}-${product_version}"
+  $install_path = "${distribution_path}/${install_dir_name}"
 
   # ---- Configuration parameters for deployment.toml ---- #
   $server_config_port = 9743
